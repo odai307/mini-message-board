@@ -15,7 +15,12 @@ const SQL = `
 
 async function main() {
     console.log("Seeding...")
-    const client = new Client({ connectionString: process.env.DATABASE_URL });
+    const client = new Client({
+        connectionString: process.env.DATABASE_URL ,
+        ssl: {
+            rejectUnauthorized: false, // allow self-signed certs (safe for most cloud dbs)
+          },
+        });
     await client.connect();
     await client.query(SQL);
     await client.end();

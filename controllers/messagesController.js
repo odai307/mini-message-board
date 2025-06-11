@@ -6,8 +6,11 @@ const getAllMessages = async (req, res) => {
 }
 
 
-const newMessage = (req, res) => {
-    res.render("form")
+const newMessageGet = (req, res) => {
+    res.render("createMessage", {
+        title: "New Message",
+        header: "➕ Add a New Message"
+    })
 }
 
 const newMessagePost = async (req, res) => {
@@ -27,10 +30,36 @@ const getMessageById = async (req, res) => {
     return res.render("message", { message });
 }
 
+const updateMessageGet = async (req, res) => {
+    const id = req.params.id;
+    const user = await db.getMessageById(id);
+    res.render("updateMessage", {
+        user: user,
+        header: "Update User",
+        title: "Update User"
+    });
+}
+
+const updateMessagePost = async (req, res) => {
+    const id = req.params.id;
+    const newMessage = req.body.message;
+    await db.updateMessage(id, newMessage);
+    res.redirect("/");
+}
+
+
+const deleteMessage = async (req, res) => {
+    const id = req.params.id;
+    await db.deleteMessage(id);
+    res.redirect("/");
+}
 
 module.exports = {
     getAllMessages,
-    newMessage,
+    newMessageGet,
     newMessagePost,
-    getMessageById
+    getMessageById,
+    updateMessageGet,
+    updateMessagePost,
+    deleteMessage
 }

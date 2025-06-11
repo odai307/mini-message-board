@@ -12,7 +12,11 @@
         <p><strong>User:</strong> <%= message.username %></p>
         <p><strong>Message:</strong> <%= message.message %></p>
         <p><small><strong>Date:</strong> <%= message.timestamp.toLocaleString() %></small></p>
-        <a href="/message/<%= message.id %>">🔍 Open Message</a>
+        <p><a href="/message/<%= message.id %>">🔍 Open Message</a></p>
+        <p><a href="/<%= message.id %>/update">Update User</a></p>
+        <form action="<%= message.id %>/delete %>" method="POST">
+          <button type="submit">Delete User</button>
+        </form>
       </div>
     <% }) %>
     <a href="/new"><button>➕ Add a New Message</button></a>
