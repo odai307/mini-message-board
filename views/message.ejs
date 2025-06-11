@@ -7,9 +7,9 @@
   <body>
     <h2>📨 Message Details</h2>
     <div class="message-card">
-      <p><strong>User:</strong> <%= message.user %></p>
-      <p><strong>Message:</strong> <%= message.text %></p>
-      <p><small><strong>Date:</strong> <%= message.added.toLocaleString() %></small></p>
+      <p><strong>User:</strong> <%= message.username %></p>
+      <p><strong>Message:</strong> <%= message.message %></p>
+      <p><small><strong>Date:</strong> <%= message.timestamp.toLocaleString() %></small></p>
     </div>
     <a href="/"><button>⬅ Back to Messages</button></a>
   </body>

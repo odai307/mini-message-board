@@ -7,14 +7,14 @@
   </head>
   <body>
     <h1>📋 Message Board</h1>
-    <% for (let i = 0; i < messages.length; i++) { %>
+    <% messages.forEach(message => { %>
       <div class="message-card">
-        <p><strong>User:</strong> <%= messages[i].user %></p>
-        <p><strong>Message:</strong> <%= messages[i].text %></p>
-        <p><small><strong>Date:</strong> <%= messages[i].added.toLocaleString() %></small></p>
-        <a href="/message/<%= i %>">🔍 Open Message</a>
+        <p><strong>User:</strong> <%= message.username %></p>
+        <p><strong>Message:</strong> <%= message.message %></p>
+        <p><small><strong>Date:</strong> <%= message.timestamp.toLocaleString() %></small></p>
+        <a href="/message/<%= message.id %>">🔍 Open Message</a>
       </div>
-    <% } %>
+    <% }) %>
     <a href="/new"><button>➕ Add a New Message</button></a>
   </body>
 </html>
